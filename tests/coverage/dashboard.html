@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /Users/slavabasko/www/lang-php/src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="_css/billboard.min.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=12.5.1" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/Users/slavabasko/www/lang-php/src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#11">Basko\Lang\Dumper\ASTDotBuilder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#5">Basko\Lang\Exception\ParseException</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#8">Basko\Lang\Node\MethodCallNode</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#8">Basko\Lang\Node\PropAccessNode</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/ArrayLiteralNode.php.html#7">Basko\Lang\Node\ArrayLiteralNode</a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#8">Basko\Lang\Node\FunctionCallNode</a></td><td class="text-right">53%</td></tr>
+       <tr><td><a href="Node/IdentifierNode.php.html#9">Basko\Lang\Node\IdentifierNode</a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Node/BooleanNode.php.html#8">Basko\Lang\Node\BooleanNode</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Node/StringNode.php.html#6">Basko\Lang\Node\StringNode</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#8">Basko\Lang\Stream\ExpressionStream</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#7">Basko\Lang\EvaluateContext</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Node/ArrAccessNode.php.html#8">Basko\Lang\Node\ArrAccessNode</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#8">Basko\Lang\Stream\TokenStream</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Node/UnaryNode.php.html#8">Basko\Lang\Node\UnaryNode</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Node/BinaryNode.php.html#8">Basko\Lang\Node\BinaryNode</a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Parser.php.html#21">Basko\Lang\Parser</a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Tokenizer.php.html#8">Basko\Lang\Tokenizer</a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Node/TernaryNode.php.html#7">Basko\Lang\Node\TernaryNode</a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#11">Basko\Lang\Dumper\ASTDotBuilder</a></td><td class="text-right">0.0%</td><td class="text-right">35</td><td class="text-right">1260</td></tr>
+       <tr><td><a href="Tokenizer.php.html#8">Basko\Lang\Tokenizer</a></td><td class="text-right">85.0%</td><td class="text-right">64</td><td class="text-right">77</td></tr>
+       <tr><td><a href="Node/BinaryNode.php.html#8">Basko\Lang\Node\BinaryNode</a></td><td class="text-right">81.2%</td><td class="text-right">50</td><td class="text-right">66</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#5">Basko\Lang\Exception\ParseException</a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#8">Basko\Lang\Node\MethodCallNode</a></td><td class="text-right">0.0%</td><td class="text-right">7</td><td class="text-right">56</td></tr>
+       <tr><td><a href="Parser.php.html#21">Basko\Lang\Parser</a></td><td class="text-right">81.8%</td><td class="text-right">35</td><td class="text-right">42</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#8">Basko\Lang\Node\PropAccessNode</a></td><td class="text-right">0.0%</td><td class="text-right">5</td><td class="text-right">30</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#7">Basko\Lang\EvaluateContext</a></td><td class="text-right">75.0%</td><td class="text-right">12</td><td class="text-right">14</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#8">Basko\Lang\Stream\ExpressionStream</a></td><td class="text-right">66.7%</td><td class="text-right">10</td><td class="text-right">13</td></tr>
+       <tr><td><a href="Node/ArrAccessNode.php.html#8">Basko\Lang\Node\ArrAccessNode</a></td><td class="text-right">75.0%</td><td class="text-right">9</td><td class="text-right">10</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#8">Basko\Lang\Node\FunctionCallNode</a></td><td class="text-right">53.8%</td><td class="text-right">6</td><td class="text-right">9</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#8">Basko\Lang\Stream\TokenStream</a></td><td class="text-right">78.6%</td><td class="text-right">9</td><td class="text-right">9</td></tr>
+       <tr><td><a href="Node/ArrayLiteralNode.php.html#7">Basko\Lang\Node\ArrayLiteralNode</a></td><td class="text-right">50.0%</td><td class="text-right">5</td><td class="text-right">8</td></tr>
+       <tr><td><a href="Node/UnaryNode.php.html#8">Basko\Lang\Node\UnaryNode</a></td><td class="text-right">80.0%</td><td class="text-right">6</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Node/IdentifierNode.php.html#9">Basko\Lang\Node\IdentifierNode</a></td><td class="text-right">60.0%</td><td class="text-right">4</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Node/BooleanNode.php.html#8">Basko\Lang\Node\BooleanNode</a></td><td class="text-right">66.7%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Node/TernaryNode.php.html#7">Basko\Lang\Node\TernaryNode</a></td><td class="text-right">85.7%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#23"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::build">build</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#49"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::visit">visit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#119"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::nodeLabel">nodeLabel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#165"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::getPrivate">getPrivate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#71"><abbr title="Basko\Lang\EvaluateContext::addFunction">addFunction</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#10"><abbr title="Basko\Lang\Exception\ParseException::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#17"><abbr title="Basko\Lang\Exception\ParseException::getPosition">getPosition</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#22"><abbr title="Basko\Lang\Exception\ParseException::getExpression">getExpression</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#31"><abbr title="Basko\Lang\Exception\ParseException::getSnippet">getSnippet</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/ArrAccessNode.php.html#41"><abbr title="Basko\Lang\Node\ArrAccessNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/ArrayLiteralNode.php.html#26"><abbr title="Basko\Lang\Node\ArrayLiteralNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/BooleanNode.php.html#22"><abbr title="Basko\Lang\Node\BooleanNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#33"><abbr title="Basko\Lang\Node\FunctionCallNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/IdentifierNode.php.html#27"><abbr title="Basko\Lang\Node\IdentifierNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#14"><abbr title="Basko\Lang\Node\MethodCallNode::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#21"><abbr title="Basko\Lang\Node\MethodCallNode::evaluate">evaluate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#41"><abbr title="Basko\Lang\Node\MethodCallNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#13"><abbr title="Basko\Lang\Node\PropAccessNode::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#19"><abbr title="Basko\Lang\Node\PropAccessNode::evaluate">evaluate</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#33"><abbr title="Basko\Lang\Node\PropAccessNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/StringNode.php.html#20"><abbr title="Basko\Lang\Node\StringNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/TernaryNode.php.html#27"><abbr title="Basko\Lang\Node\TernaryNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Node/UnaryNode.php.html#33"><abbr title="Basko\Lang\Node\UnaryNode::toString">toString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#67"><abbr title="Basko\Lang\Stream\ExpressionStream::getString">getString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#72"><abbr title="Basko\Lang\Stream\ExpressionStream::expect">expect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#72"><abbr title="Basko\Lang\Stream\TokenStream::getPosition">getPosition</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Tokenizer.php.html#21"><abbr title="Basko\Lang\Tokenizer::getExpressionStream">getExpressionStream</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Parser.php.html#216"><abbr title="Basko\Lang\Parser::parsePostfix">parsePostfix</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Tokenizer.php.html#140"><abbr title="Basko\Lang\Tokenizer::tokenizeString">tokenizeString</abbr></a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#81"><abbr title="Basko\Lang\EvaluateContext::getVariable">getVariable</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#95"><abbr title="Basko\Lang\EvaluateContext::getFunction">getFunction</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Node/IdentifierNode.php.html#18"><abbr title="Basko\Lang\Node\IdentifierNode::evaluate">evaluate</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Parser.php.html#56"><abbr title="Basko\Lang\Parser::getInfixBindingPower">getInfixBindingPower</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#39"><abbr title="Basko\Lang\Stream\ExpressionStream::peek">peek</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#39"><abbr title="Basko\Lang\Stream\TokenStream::peek">peek</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#64"><abbr title="Basko\Lang\Stream\TokenStream::expect">expect</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#11"><abbr title="Basko\Lang\EvaluateContext::__construct">__construct</abbr></a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Node/ArrAccessNode.php.html#19"><abbr title="Basko\Lang\Node\ArrAccessNode::evaluate">evaluate</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Node/BinaryNode.php.html#27"><abbr title="Basko\Lang\Node\BinaryNode::evaluate">evaluate</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#19"><abbr title="Basko\Lang\Node\FunctionCallNode::evaluate">evaluate</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Node/UnaryNode.php.html#19"><abbr title="Basko\Lang\Node\UnaryNode::evaluate">evaluate</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Tokenizer.php.html#100"><abbr title="Basko\Lang\Tokenizer::tokenizeNumber">tokenizeNumber</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Parser.php.html#132"><abbr title="Basko\Lang\Parser::parsePrimary">parsePrimary</abbr></a></td><td class="text-right">86%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#49"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::visit">visit</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">16</td><td class="text-right">272</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#119"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::nodeLabel">nodeLabel</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">14</td><td class="text-right">210</td></tr>
+       <tr><td><a href="Node/BinaryNode.php.html#27"><abbr title="Basko\Lang\Node\BinaryNode::evaluate">evaluate</abbr></a></td><td class="text-right">78.3%</td><td class="text-right">44</td><td class="text-right">63</td></tr>
+       <tr><td><a href="Exception/ParseException.php.html#31"><abbr title="Basko\Lang\Exception\ParseException::getSnippet">getSnippet</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#21"><abbr title="Basko\Lang\Node\MethodCallNode::evaluate">evaluate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">4</td><td class="text-right">20</td></tr>
+       <tr><td><a href="Tokenizer.php.html#140"><abbr title="Basko\Lang\Tokenizer::tokenizeString">tokenizeString</abbr></a></td><td class="text-right">64.7%</td><td class="text-right">12</td><td class="text-right">18</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#23"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::build">build</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Node/PropAccessNode.php.html#19"><abbr title="Basko\Lang\Node\PropAccessNode::evaluate">evaluate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">3</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Parser.php.html#132"><abbr title="Basko\Lang\Parser::parsePrimary">parsePrimary</abbr></a></td><td class="text-right">86.7%</td><td class="text-right">12</td><td class="text-right">12</td></tr>
+       <tr><td><a href="Tokenizer.php.html#100"><abbr title="Basko\Lang\Tokenizer::tokenizeNumber">tokenizeNumber</abbr></a></td><td class="text-right">85.7%</td><td class="text-right">11</td><td class="text-right">11</td></tr>
+       <tr><td><a href="Parser.php.html#216"><abbr title="Basko\Lang\Parser::parsePostfix">parsePostfix</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">5</td><td class="text-right">8</td></tr>
+       <tr><td><a href="Node/ArrAccessNode.php.html#19"><abbr title="Basko\Lang\Node\ArrAccessNode::evaluate">evaluate</abbr></a></td><td class="text-right">77.8%</td><td class="text-right">7</td><td class="text-right">7</td></tr>
+       <tr><td><a href="Dumper/ASTDotBuilder.php.html#165"><abbr title="Basko\Lang\Dumper\ASTDotBuilder::getPrivate">getPrivate</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Node/ArrayLiteralNode.php.html#26"><abbr title="Basko\Lang\Node\ArrayLiteralNode::toString">toString</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Node/BooleanNode.php.html#22"><abbr title="Basko\Lang\Node\BooleanNode::toString">toString</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#33"><abbr title="Basko\Lang\Node\FunctionCallNode::toString">toString</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Node/MethodCallNode.php.html#41"><abbr title="Basko\Lang\Node\MethodCallNode::toString">toString</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#72"><abbr title="Basko\Lang\Stream\ExpressionStream::expect">expect</abbr></a></td><td class="text-right">0.0%</td><td class="text-right">2</td><td class="text-right">6</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#11"><abbr title="Basko\Lang\EvaluateContext::__construct">__construct</abbr></a></td><td class="text-right">76.9%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Node/UnaryNode.php.html#19"><abbr title="Basko\Lang\Node\UnaryNode::evaluate">evaluate</abbr></a></td><td class="text-right">85.7%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Node/FunctionCallNode.php.html#19"><abbr title="Basko\Lang\Node\FunctionCallNode::evaluate">evaluate</abbr></a></td><td class="text-right">83.3%</td><td class="text-right">3</td><td class="text-right">3</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#81"><abbr title="Basko\Lang\EvaluateContext::getVariable">getVariable</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="EvaluateContext.php.html#95"><abbr title="Basko\Lang\EvaluateContext::getFunction">getFunction</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Node/IdentifierNode.php.html#18"><abbr title="Basko\Lang\Node\IdentifierNode::evaluate">evaluate</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Parser.php.html#56"><abbr title="Basko\Lang\Parser::getInfixBindingPower">getInfixBindingPower</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Stream/ExpressionStream.php.html#39"><abbr title="Basko\Lang\Stream\ExpressionStream::peek">peek</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#39"><abbr title="Basko\Lang\Stream\TokenStream::peek">peek</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Stream/TokenStream.php.html#64"><abbr title="Basko\Lang\Stream\TokenStream::expect">expect</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.1</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.14</a> and <a href="https://phpunit.de/">PHPUnit 12.5.2</a> at Mon Dec 22 18:38:02 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/billboard.pkgd.min.js?v=12.5.1" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[0,35,"Dumper\/ASTDotBuilder.php.html#11","Basko\\Lang\\Dumper\\ASTDotBuilder","1260"],[0,7,"Exception\/ParseException.php.html#5","Basko\\Lang\\Exception\\ParseException","56"],[0,7,"Node\/MethodCallNode.php.html#8","Basko\\Lang\\Node\\MethodCallNode","56"],[0,5,"Node\/PropAccessNode.php.html#8","Basko\\Lang\\Node\\PropAccessNode","30"],[50,5,"Node\/ArrayLiteralNode.php.html#7","Basko\\Lang\\Node\\ArrayLiteralNode","8.12"],[53.84615384615385,6,"Node\/FunctionCallNode.php.html#8","Basko\\Lang\\Node\\FunctionCallNode","9.54"],[60,4,"Node\/IdentifierNode.php.html#9","Basko\\Lang\\Node\\IdentifierNode","5.02"],[66.66666666666666,4,"Node\/BooleanNode.php.html#8","Basko\\Lang\\Node\\BooleanNode","4.59"],[66.66666666666666,3,"Node\/StringNode.php.html#6","Basko\\Lang\\Node\\StringNode","3.33"],[66.66666666666666,10,"Stream\/ExpressionStream.php.html#8","Basko\\Lang\\Stream\\ExpressionStream","13.70"],[75,12,"EvaluateContext.php.html#7","Basko\\Lang\\EvaluateContext","14.25"],[75,9,"Node\/ArrAccessNode.php.html#8","Basko\\Lang\\Node\\ArrAccessNode","10.27"],[78.57142857142857,9,"Stream\/TokenStream.php.html#8","Basko\\Lang\\Stream\\TokenStream","9.80"],[80,6,"Node\/UnaryNode.php.html#8","Basko\\Lang\\Node\\UnaryNode","6.29"],[81.15942028985508,50,"Node\/BinaryNode.php.html#8","Basko\\Lang\\Node\\BinaryNode","66.72"],[81.81818181818183,35,"Parser.php.html#21","Basko\\Lang\\Parser","42.36"],[85.03937007874016,64,"Tokenizer.php.html#8","Basko\\Lang\\Tokenizer","77.72"],[85.71428571428571,4,"Node\/TernaryNode.php.html#7","Basko\\Lang\\Node\\TernaryNode","4.05"],[100,0,"Exception\/ContextException.php.html#5","Basko\\Lang\\Exception\\ContextException","0"],[100,0,"Exception\/Exception.php.html#6","Basko\\Lang\\Exception\\Exception","0"],[100,0,"Node\/Exception\/EvaluateException.php.html#7","Basko\\Lang\\Node\\Exception\\EvaluateException","0"],[100,3,"Node\/NumberNode.php.html#7","Basko\\Lang\\Node\\NumberNode","3"],[100,0,"Stream\/Exception\/StreamException.php.html#7","Basko\\Lang\\Stream\\Exception\\StreamException","0"],[100,1,"Token.php.html#5","Basko\\Lang\\Token","1"]]</script>
+  <script type="application/json" id="complexity_method">[[0,3,"Dumper\/ASTDotBuilder.php.html#23","Basko\\Lang\\Dumper\\ASTDotBuilder::build","12"],[0,16,"Dumper\/ASTDotBuilder.php.html#49","Basko\\Lang\\Dumper\\ASTDotBuilder::visit","272"],[0,14,"Dumper\/ASTDotBuilder.php.html#119","Basko\\Lang\\Dumper\\ASTDotBuilder::nodeLabel","210"],[0,2,"Dumper\/ASTDotBuilder.php.html#165","Basko\\Lang\\Dumper\\ASTDotBuilder::getPrivate","6"],[0,1,"EvaluateContext.php.html#71","Basko\\Lang\\EvaluateContext::addFunction","2"],[0,1,"Exception\/ParseException.php.html#10","Basko\\Lang\\Exception\\ParseException::__construct","2"],[0,1,"Exception\/ParseException.php.html#17","Basko\\Lang\\Exception\\ParseException::getPosition","2"],[0,1,"Exception\/ParseException.php.html#22","Basko\\Lang\\Exception\\ParseException::getExpression","2"],[0,4,"Exception\/ParseException.php.html#31","Basko\\Lang\\Exception\\ParseException::getSnippet","20"],[0,1,"Node\/ArrAccessNode.php.html#41","Basko\\Lang\\Node\\ArrAccessNode::toString","2"],[0,2,"Node\/ArrayLiteralNode.php.html#26","Basko\\Lang\\Node\\ArrayLiteralNode::toString","6"],[0,2,"Node\/BooleanNode.php.html#22","Basko\\Lang\\Node\\BooleanNode::toString","6"],[0,2,"Node\/FunctionCallNode.php.html#33","Basko\\Lang\\Node\\FunctionCallNode::toString","6"],[0,1,"Node\/IdentifierNode.php.html#27","Basko\\Lang\\Node\\IdentifierNode::toString","2"],[0,1,"Node\/MethodCallNode.php.html#14","Basko\\Lang\\Node\\MethodCallNode::__construct","2"],[0,4,"Node\/MethodCallNode.php.html#21","Basko\\Lang\\Node\\MethodCallNode::evaluate","20"],[0,2,"Node\/MethodCallNode.php.html#41","Basko\\Lang\\Node\\MethodCallNode::toString","6"],[0,1,"Node\/PropAccessNode.php.html#13","Basko\\Lang\\Node\\PropAccessNode::__construct","2"],[0,3,"Node\/PropAccessNode.php.html#19","Basko\\Lang\\Node\\PropAccessNode::evaluate","12"],[0,1,"Node\/PropAccessNode.php.html#33","Basko\\Lang\\Node\\PropAccessNode::toString","2"],[0,1,"Node\/StringNode.php.html#20","Basko\\Lang\\Node\\StringNode::toString","2"],[0,1,"Node\/TernaryNode.php.html#27","Basko\\Lang\\Node\\TernaryNode::toString","2"],[0,1,"Node\/UnaryNode.php.html#33","Basko\\Lang\\Node\\UnaryNode::toString","2"],[0,1,"Stream\/ExpressionStream.php.html#67","Basko\\Lang\\Stream\\ExpressionStream::getString","2"],[0,2,"Stream\/ExpressionStream.php.html#72","Basko\\Lang\\Stream\\ExpressionStream::expect","6"],[0,1,"Stream\/TokenStream.php.html#72","Basko\\Lang\\Stream\\TokenStream::getPosition","2"],[0,1,"Tokenizer.php.html#21","Basko\\Lang\\Tokenizer::getExpressionStream","2"],[50,5,"Parser.php.html#216","Basko\\Lang\\Parser::parsePostfix","8.12"],[64.70588235294117,12,"Tokenizer.php.html#140","Basko\\Lang\\Tokenizer::tokenizeString","18.33"],[66.66666666666666,2,"EvaluateContext.php.html#81","Basko\\Lang\\EvaluateContext::getVariable","2.15"],[66.66666666666666,2,"EvaluateContext.php.html#95","Basko\\Lang\\EvaluateContext::getFunction","2.15"],[66.66666666666666,2,"Node\/IdentifierNode.php.html#18","Basko\\Lang\\Node\\IdentifierNode::evaluate","2.15"],[66.66666666666666,2,"Parser.php.html#56","Basko\\Lang\\Parser::getInfixBindingPower","2.15"],[66.66666666666666,2,"Stream\/ExpressionStream.php.html#39","Basko\\Lang\\Stream\\ExpressionStream::peek","2.15"],[66.66666666666666,2,"Stream\/TokenStream.php.html#39","Basko\\Lang\\Stream\\TokenStream::peek","2.15"],[66.66666666666666,2,"Stream\/TokenStream.php.html#64","Basko\\Lang\\Stream\\TokenStream::expect","2.15"],[76.92307692307693,4,"EvaluateContext.php.html#11","Basko\\Lang\\EvaluateContext::__construct","4.20"],[77.77777777777779,7,"Node\/ArrAccessNode.php.html#19","Basko\\Lang\\Node\\ArrAccessNode::evaluate","7.54"],[78.33333333333333,44,"Node\/BinaryNode.php.html#27","Basko\\Lang\\Node\\BinaryNode::evaluate","63.69"],[83.33333333333334,3,"Node\/FunctionCallNode.php.html#19","Basko\\Lang\\Node\\FunctionCallNode::evaluate","3.04"],[85.71428571428571,4,"Node\/UnaryNode.php.html#19","Basko\\Lang\\Node\\UnaryNode::evaluate","4.05"],[85.71428571428571,11,"Tokenizer.php.html#100","Basko\\Lang\\Tokenizer::tokenizeNumber","11.35"],[86.66666666666667,12,"Parser.php.html#132","Basko\\Lang\\Parser::parsePrimary","12.34"],[90,4,"Parser.php.html#258","Basko\\Lang\\Parser::parseArguments","4.02"],[92.3076923076923,5,"Tokenizer.php.html#221","Basko\\Lang\\Tokenizer::tokenizeOperator","5.01"],[94.28571428571428,11,"Parser.php.html#74","Basko\\Lang\\Parser::parseExpression","11.02"],[95.1219512195122,15,"Tokenizer.php.html#46","Basko\\Lang\\Tokenizer::tokenize","15"],[100,1,"EvaluateContext.php.html#66","Basko\\Lang\\EvaluateContext::addVariable","1"],[100,1,"EvaluateContext.php.html#76","Basko\\Lang\\EvaluateContext::hasVariable","1"],[100,1,"EvaluateContext.php.html#90","Basko\\Lang\\EvaluateContext::hasFunction","1"],[100,1,"Node\/ArrAccessNode.php.html#13","Basko\\Lang\\Node\\ArrAccessNode::__construct","1"],[100,1,"Node\/ArrayLiteralNode.php.html#11","Basko\\Lang\\Node\\ArrayLiteralNode::__construct","1"],[100,2,"Node\/ArrayLiteralNode.php.html#16","Basko\\Lang\\Node\\ArrayLiteralNode::evaluate","2"],[100,2,"Node\/BinaryNode.php.html#15","Basko\\Lang\\Node\\BinaryNode::__construct","2"],[100,1,"Node\/BinaryNode.php.html#117","Basko\\Lang\\Node\\BinaryNode::bcHuman","1"],[100,2,"Node\/BinaryNode.php.html#121","Basko\\Lang\\Node\\BinaryNode::isNumber","2"],[100,1,"Node\/BinaryNode.php.html#127","Basko\\Lang\\Node\\BinaryNode::toString","1"],[100,1,"Node\/BooleanNode.php.html#12","Basko\\Lang\\Node\\BooleanNode::__construct","1"],[100,1,"Node\/BooleanNode.php.html#17","Basko\\Lang\\Node\\BooleanNode::evaluate","1"],[100,1,"Node\/FunctionCallNode.php.html#13","Basko\\Lang\\Node\\FunctionCallNode::__construct","1"],[100,1,"Node\/IdentifierNode.php.html#13","Basko\\Lang\\Node\\IdentifierNode::__construct","1"],[100,1,"Node\/NumberNode.php.html#11","Basko\\Lang\\Node\\NumberNode::__construct","1"],[100,1,"Node\/NumberNode.php.html#16","Basko\\Lang\\Node\\NumberNode::evaluate","1"],[100,1,"Node\/NumberNode.php.html#21","Basko\\Lang\\Node\\NumberNode::toString","1"],[100,1,"Node\/StringNode.php.html#10","Basko\\Lang\\Node\\StringNode::__construct","1"],[100,1,"Node\/StringNode.php.html#15","Basko\\Lang\\Node\\StringNode::evaluate","1"],[100,1,"Node\/TernaryNode.php.html#13","Basko\\Lang\\Node\\TernaryNode::__construct","1"],[100,2,"Node\/TernaryNode.php.html#20","Basko\\Lang\\Node\\TernaryNode::evaluate","2"],[100,1,"Node\/UnaryNode.php.html#13","Basko\\Lang\\Node\\UnaryNode::__construct","1"],[100,1,"Parser.php.html#65","Basko\\Lang\\Parser::parse","1"],[100,1,"Stream\/ExpressionStream.php.html#19","Basko\\Lang\\Stream\\ExpressionStream::__construct","1"],[100,1,"Stream\/ExpressionStream.php.html#25","Basko\\Lang\\Stream\\ExpressionStream::reset","1"],[100,1,"Stream\/ExpressionStream.php.html#30","Basko\\Lang\\Stream\\ExpressionStream::isEof","1"],[100,1,"Stream\/ExpressionStream.php.html#48","Basko\\Lang\\Stream\\ExpressionStream::consume","1"],[100,1,"Stream\/ExpressionStream.php.html#59","Basko\\Lang\\Stream\\ExpressionStream::getPosition","1"],[100,1,"Stream\/TokenStream.php.html#19","Basko\\Lang\\Stream\\TokenStream::__construct","1"],[100,1,"Stream\/TokenStream.php.html#25","Basko\\Lang\\Stream\\TokenStream::reset","1"],[100,1,"Stream\/TokenStream.php.html#30","Basko\\Lang\\Stream\\TokenStream::isEof","1"],[100,1,"Stream\/TokenStream.php.html#52","Basko\\Lang\\Stream\\TokenStream::consume","1"],[100,1,"Token.php.html#26","Basko\\Lang\\Token::__construct","1"],[100,1,"Tokenizer.php.html#16","Basko\\Lang\\Tokenizer::__construct","1"],[100,4,"Tokenizer.php.html#26","Basko\\Lang\\Tokenizer::isWhitespace","4"],[100,2,"Tokenizer.php.html#31","Basko\\Lang\\Tokenizer::isDigit","2"],[100,5,"Tokenizer.php.html#36","Basko\\Lang\\Tokenizer::isLetter","5"],[100,2,"Tokenizer.php.html#41","Basko\\Lang\\Tokenizer::isLetterOrDigit","2"],[100,6,"Tokenizer.php.html#194","Basko\\Lang\\Tokenizer::tokenizeIdentifier","6"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [4,0,0,0,0,0,2,4,3,5,0,6])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [27,0,0,0,0,0,1,8,3,4,4,39])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>

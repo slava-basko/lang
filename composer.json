@@ -1,0 +1,26 @@
+{
+  "name": "slava-basko/lang-php",
+  "type": "library",
+  "description": "Language to write business expressions",
+  "keywords": ["language", "expressions"],
+  "authors": [
+    {
+      "name": "Slava Basko",
+      "email": "basko.slava@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Basko\\Lang\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Basko\\Lang\\": "tests"
+    }
+  }
+}
