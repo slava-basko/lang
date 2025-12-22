@@ -20,6 +20,6 @@ class NumberNode implements NodeInterface
 
     public function toString()
     {
-        return (string)$this->value;
+        return (string) $this->value;
     }
 }

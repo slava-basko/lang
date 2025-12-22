@@ -62,10 +62,10 @@ class ASTDotBuilder
         } elseif ($node instanceof \Basko\Lang\Node\UnaryNode) {
             $operandId = $this->visit($this->getPrivate($node, 'operand'));
             $this->edges[] = [$id, $operandId];
-        } elseif ($node instanceof \Basko\Lang\Node\NumberNode ||
-            $node instanceof \Basko\Lang\Node\StringNode ||
-            $node instanceof \Basko\Lang\Node\BooleanNode ||
-            $node instanceof \Basko\Lang\Node\IdentifierNode) {
+        } elseif ($node instanceof \Basko\Lang\Node\NumberNode
+            || $node instanceof \Basko\Lang\Node\StringNode
+            || $node instanceof \Basko\Lang\Node\BooleanNode
+            || $node instanceof \Basko\Lang\Node\IdentifierNode) {
             // листья — ничего не делать
         } elseif ($node instanceof \Basko\Lang\Node\FunctionCallNode) {
             $args = $this->getPrivate($node, 'args');

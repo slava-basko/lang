@@ -4,7 +4,4 @@ namespace Basko\Lang\Stream\Exception;
 
 use Basko\Lang\Exception\Exception;
 
-class StreamException extends Exception
-{
-
-}
+class StreamException extends Exception {}

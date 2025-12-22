@@ -3,6 +3,7 @@
 namespace Basko\Lang\Node;
 
 use Basko\Lang\EvaluateContext;
+
 class StringNode implements NodeInterface
 {
     private $value;

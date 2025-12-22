@@ -122,7 +122,7 @@ class Parser
                 continue;
             }
 
-//            throw new Exception("Bad token '{$token->value}' at position {$token->pos} (operator expected)");
+            //            throw new Exception("Bad token '{$token->value}' at position {$token->pos} (operator expected)");
             throw new ParseException("Bad token '{$token->value}' (operator expected)", $token->pos, $this->tokenizer->getExpressionStream()->getString());
         }
 
@@ -259,8 +259,8 @@ class Parser
     {
         $args = [];
 
-        if ($this->tokenStream->peek()->type === Token::RPAREN ||
-            $this->tokenStream->peek()->type === Token::RBRACKET) {
+        if ($this->tokenStream->peek()->type === Token::RPAREN
+            || $this->tokenStream->peek()->type === Token::RBRACKET) {
             return $args;
         }
 

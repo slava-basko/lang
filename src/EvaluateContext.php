@@ -4,7 +4,8 @@ namespace Basko\Lang;
 
 use Basko\Lang\Exception\ContextException;
 
-class EvaluateContext {
+class EvaluateContext
+{
     private $variables = [];
     private $functions = [];
 
@@ -48,19 +49,19 @@ class EvaluateContext {
             return \count($a);
         };
 
-//        $this->functions['contains'] = function ($needle, $haystack) {
-//            if (\is_string($haystack)) {
-//                return $needle === '' || false !== \strpos($haystack, $needle);
-//            }
-//
-//            foreach ($haystack as $element) {
-//                if ($needle === $element) {
-//                    return true;
-//                }
-//            }
-//
-//            return false;
-//        };
+        //        $this->functions['contains'] = function ($needle, $haystack) {
+        //            if (\is_string($haystack)) {
+        //                return $needle === '' || false !== \strpos($haystack, $needle);
+        //            }
+        //
+        //            foreach ($haystack as $element) {
+        //                if ($needle === $element) {
+        //                    return true;
+        //                }
+        //            }
+        //
+        //            return false;
+        //        };
     }
 
     public function addVariable($var, $value)

@@ -38,7 +38,7 @@ class Tokenizer
         return ($char >= 'a' && $char <= 'z') || ($char >= 'A' && $char <= 'Z') || $char === '_';
     }
 
-    function isLetterOrDigit($char)
+    public function isLetterOrDigit($char)
     {
         return $this->isLetter($char) || $this->isDigit($char);
     }
@@ -131,7 +131,7 @@ class Tokenizer
 
         $this->tokens[] = new Token(
             Token::NUMBER,
-//            $hasDot ? (float)$value : (int)$value,
+            //            $hasDot ? (float)$value : (int)$value,
             $value,
             $position
         );

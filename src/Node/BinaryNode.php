@@ -36,7 +36,7 @@ class BinaryNode implements NodeInterface
                 }
                 $r = $this->right->evaluate($context);
 
-                return (bool)$l && (bool)$r;
+                return (bool) $l && (bool) $r;
 
             case '||':
                 if ($l) {
@@ -44,9 +44,9 @@ class BinaryNode implements NodeInterface
                 }
                 $r = $this->right->evaluate($context);
 
-                return (bool)$l || (bool)$r;
+                return (bool) $l || (bool) $r;
 
-            // остальные операторы — для них нужно вычислять правый
+                // остальные операторы — для них нужно вычислять правый
             default:
                 $r = $this->right->evaluate($context);
 
@@ -56,7 +56,7 @@ class BinaryNode implements NodeInterface
                     case '+':
                         return $useBc ? $this->bcHuman(bcadd($l, $r)) : $l + $r;
                     case '-':
-                        return $useBc ? $this->bcHuman(bcsub($l, $r)) :  $l - $r;
+                        return $useBc ? $this->bcHuman(bcsub($l, $r)) : $l - $r;
                     case '*':
                         return $useBc ? $this->bcHuman(bcmul($l, $r)) : $l * $r;
                     case '/':
@@ -114,7 +114,8 @@ class BinaryNode implements NodeInterface
         }
     }
 
-    private function bcHuman(string $num): string {
+    private function bcHuman(string $num): string
+    {
         return rtrim(rtrim($num, '0'), '.');
     }
 

@@ -10,8 +10,8 @@ class ParseException extends Exception
     public function __construct($message, $position, $expression)
     {
         parent::__construct($message);
-        $this->position = (int)$position;
-        $this->expression = (string)$expression;
+        $this->position = (int) $position;
+        $this->expression = (string) $expression;
     }
 
     public function getPosition()

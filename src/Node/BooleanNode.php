@@ -2,7 +2,6 @@
 
 namespace Basko\Lang\Node;
 
-
 use Basko\Lang\EvaluateContext;
 
 class BooleanNode implements NodeInterface

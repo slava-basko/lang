@@ -4,20 +4,20 @@ namespace Basko\Lang;
 
 class Token
 {
-    const BOOLEAN = 'boolean';
-    const NUMBER = 'number';
-    const STRING = 'string';
-    const IDENTIFIER = 'identifier';
-    const OPERATOR = 'operator';
-    const LPAREN = 'lparen';
-    const RPAREN = 'rparen';
-    const LBRACKET = 'lbracket';
-    const RBRACKET = 'rbracket';
-    const COMMA = 'comma';
-    const QUESTION = 'question';
-    const COLON = 'colon';
-    const DOT = 'dot';
-    const EOF = 'eof';
+    public const BOOLEAN = 'boolean';
+    public const NUMBER = 'number';
+    public const STRING = 'string';
+    public const IDENTIFIER = 'identifier';
+    public const OPERATOR = 'operator';
+    public const LPAREN = 'lparen';
+    public const RPAREN = 'rparen';
+    public const LBRACKET = 'lbracket';
+    public const RBRACKET = 'rbracket';
+    public const COMMA = 'comma';
+    public const QUESTION = 'question';
+    public const COLON = 'colon';
+    public const DOT = 'dot';
+    public const EOF = 'eof';
 
     public $type;
     public $value;

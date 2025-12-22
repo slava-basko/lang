@@ -26,7 +26,7 @@ class VarsTest extends BaseCase
         $this->assertTrue($this->evalExp('var2 == 2'));
         $this->assertTrue($this->evalExp('var2 > var1'));
         $this->assertEquals(3, $this->evalExp('var2 + var1'));
-//        $this->assertEquals('CA', $this->evalExp('address.country'));
+        //        $this->assertEquals('CA', $this->evalExp('address.country'));
         $this->assertEquals('CA', $this->evalExp('address["country"]'));
     }
 }
