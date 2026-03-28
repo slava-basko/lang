@@ -66,8 +66,6 @@ class Parser
      * @param string $input
      * @return \Basko\Lang\Node\NodeInterface
      * @throws \Basko\Lang\Exception\Exception
-     * @throws \Basko\Lang\Exception\ParseException
-     * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     public function parse($input)
     {
@@ -82,8 +80,6 @@ class Parser
      * @param $minBindingPower
      * @return \Basko\Lang\Node\NodeInterface
      * @throws \Basko\Lang\Exception\Exception
-     * @throws \Basko\Lang\Exception\ParseException
-     * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     private function parseExpression($minBindingPower)
     {
@@ -146,8 +142,6 @@ class Parser
     /**
      * @return \Basko\Lang\Node\NodeInterface
      * @throws \Basko\Lang\Exception\Exception
-     * @throws \Basko\Lang\Exception\ParseException
-     * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     private function parsePrimary()
     {
@@ -235,10 +229,8 @@ class Parser
 
     /**
      * @param \Basko\Lang\Node\NodeInterface $left
-     * @return \Basko\Lang\Node\ArrAccessNode|\Basko\Lang\Node\MethodCallNode|\Basko\Lang\Node\PropAccessNode
+     * @return \Basko\Lang\Node\NodeInterface
      * @throws \Basko\Lang\Exception\Exception
-     * @throws \Basko\Lang\Exception\ParseException
-     * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     private function parsePostfix($left)
     {
@@ -285,8 +277,6 @@ class Parser
     /**
      * @return array
      * @throws \Basko\Lang\Exception\Exception
-     * @throws \Basko\Lang\Exception\ParseException
-     * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     private function parseArguments()
     {

@@ -37,4 +37,17 @@ class ObjectTest extends BaseCase
 ", $parseException->getSnippet());
         }
     }
+
+    public function testArrayOfObjects()
+    {
+        $users = [
+            new \User('Slav', 30, 'some@email.com'),
+            new \User('Serg', 26, 'some-other@email.com')
+        ];
+
+        $this->evaluateContext->addVariable('users', $users);
+
+        $this->assertEquals('30', $this->evalExp('users[0].age'));
+        $this->assertEquals('some-other@email.com', $this->evalExp('users[1].getEmail()'));
+    }
 }
