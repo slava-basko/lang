@@ -41,7 +41,7 @@ class FunctionCallNode implements NodeInterface
             throw new EvaluateException("Function {$this->name} does not exist, node {$this->toString()}");
         }
 
-        return call_user_func_array($context->getFunction($this->name), $evaluatedArgs);
+        return \call_user_func_array($context->getFunction($this->name), $evaluatedArgs);
     }
 
     /**
@@ -53,7 +53,7 @@ class FunctionCallNode implements NodeInterface
         foreach ($this->args as $arg) {
             $argStrings[] = $arg->toString();
         }
-        $args = implode(', ', $argStrings);
+        $args = \implode(', ', $argStrings);
 
         return "{$this->name}({$args})";
     }

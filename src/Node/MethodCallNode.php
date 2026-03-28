@@ -41,11 +41,11 @@ class MethodCallNode implements NodeInterface
     {
         $obj = $this->object->evaluate($context);
 
-        if (!is_object($obj)) {
+        if (!\is_object($obj)) {
             throw new EvaluateException("Can't call method on non-object, node {$this->toString()}");
         }
 
-        if (!is_callable([$obj, $this->method])) {
+        if (!\is_callable([$obj, $this->method])) {
             throw new EvaluateException("Undefined method, node {$this->toString()}");
         }
 
@@ -54,7 +54,7 @@ class MethodCallNode implements NodeInterface
             $evaluatedArgs[] = $arg->evaluate($context);
         }
 
-        return call_user_func_array([$obj, $this->method], $evaluatedArgs);
+        return \call_user_func_array([$obj, $this->method], $evaluatedArgs);
     }
 
     /**
@@ -66,7 +66,7 @@ class MethodCallNode implements NodeInterface
         foreach ($this->args as $arg) {
             $argStrings[] = $arg->toString();
         }
-        $args = implode(', ', $argStrings);
+        $args = \implode(', ', $argStrings);
 
         return "{$this->object->toString()}.{$this->method}({$args})";
     }

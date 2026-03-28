@@ -36,14 +36,14 @@ class ArrAccessNode implements NodeInterface
         $key = $this->key->evaluate($context);
 
         if (
-            !is_array($arr)
+            !\is_array($arr)
             && !($arr instanceof \ArrayAccess)
         ) {
             throw new EvaluateException("Cannot access index on non-array, node {$this->toString()}");
         }
 
         if (
-            (is_array($arr) && !array_key_exists($key, $arr))
+            (\is_array($arr) && !\array_key_exists($key, $arr))
             || ($arr instanceof \ArrayAccess && !$arr->offsetExists($key))
         ) {
             throw new EvaluateException("Undefined array key: {$key}, node {$this->toString()}");

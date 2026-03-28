@@ -34,8 +34,8 @@ class PropAccessNode implements NodeInterface
     {
         $obj = $this->object->evaluate($context);
 
-        if (is_object($obj)) {
-            if (property_exists($obj, $this->property)) {
+        if (\is_object($obj)) {
+            if (\property_exists($obj, $this->property)) {
                 return $obj->{$this->property};
             }
             throw new EvaluateException("Undefined property: {$this->property}, node {$this->toString()}");

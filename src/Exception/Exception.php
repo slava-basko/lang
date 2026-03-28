@@ -4,7 +4,8 @@ namespace Basko\Lang\Exception;
 
 use Basko\Lang\Stream\Position;
 
-class Exception extends \Exception {
+class Exception extends \Exception
+{
     /**
      * @var Position
      */
@@ -21,7 +22,7 @@ class Exception extends \Exception {
      * @param string $expression
      * @return static
      */
-    static public function create($message, Position $position, $expression)
+    public static function create($message, Position $position, $expression)
     {
         $e = new static($message);
         $e->position = $position;
@@ -55,16 +56,25 @@ class Exception extends \Exception {
         $lineCount = \count($lines);
 
         for ($i = 0; $i < $lineCount; $i++) {
-            $lines[$i] = sprintf("%-3s | %s", $i + 1, $lines[$i]);
+            $lines[$i] = \sprintf("%-3s | %s", $i + 1, $lines[$i]);
         }
 
         if ($lineCount === 1) {
-            $lines[] = sprintf("%-3s | %s", '~~~', str_repeat('~', $this->position->column - 1) . "^");
+            $lines[] = \sprintf("%-3s | %s", '~~~', \str_repeat('~', $this->position->column - 1) . "^");
         } else {
-            array_splice($lines, $this->position->line, 0, sprintf("%-3s | %s", '~~~', str_repeat('~', $this->position->column - 1) . "^"));
+            \array_splice(
+                $lines,
+                $this->position->line,
+                0,
+                \sprintf(
+                    "%-3s | %s",
+                    '~~~',
+                    \str_repeat('~', $this->position->column - 1) . "^"
+                )
+            );
         }
 
-        $header = sprintf("Parse error: %s", $this->getMessage());
+        $header = \sprintf("Parse error: %s", $this->getMessage());
 
         return $header . "\n" . implode("\n", $lines) . "\n";
     }

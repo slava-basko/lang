@@ -11,11 +11,11 @@ class ExpressionStreamTest extends BaseCase
     {
         $stream = new ExpressionStream('1 + 2');
 
-        $this->assertEquals('1' , $stream->consume());
-        $this->assertEquals(' ' , $stream->consume());
-        $this->assertEquals('+' , $stream->consume());
-        $this->assertEquals(' ' , $stream->consume());
-        $this->assertEquals('2' , $stream->consume());
+        $this->assertEquals('1', $stream->consume());
+        $this->assertEquals(' ', $stream->consume());
+        $this->assertEquals('+', $stream->consume());
+        $this->assertEquals(' ', $stream->consume());
+        $this->assertEquals('2', $stream->consume());
     }
 
     public function testExpressionStreamExpect()
@@ -28,7 +28,7 @@ class ExpressionStreamTest extends BaseCase
         } catch (StreamException $streamException) {
             $this->assertEquals(
                 "Expected '-' but got '+' at position 1:2",
-                $streamException->getMessage()
+                $streamException->getMessage(),
             );
             $this->assertEquals("Parse error: Expected '-' but got '+' at position 1:2
 1   | 1+2
@@ -48,7 +48,7 @@ class ExpressionStreamTest extends BaseCase
         } catch (StreamException $streamException) {
             $this->assertEquals(
                 "Expected '-' but got '+' at position 1:3",
-                $streamException->getMessage()
+                $streamException->getMessage(),
             );
             $this->assertEquals("Parse error: Expected '-' but got '+' at position 1:3
 1   | 1 + 2
@@ -70,7 +70,7 @@ class ExpressionStreamTest extends BaseCase
         } catch (StreamException $streamException) {
             $this->assertEquals(
                 "Expected '-' but got '\n' at position 1:3",
-                $streamException->getMessage()
+                $streamException->getMessage(),
             );
             $this->assertEquals("Parse error: Expected '-' but got '\n' at position 1:3
 1   | 1 

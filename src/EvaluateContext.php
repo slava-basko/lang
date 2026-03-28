@@ -19,11 +19,11 @@ class EvaluateContext
     public function __construct()
     {
         $this->functions['max'] = function () {
-            return \call_user_func_array('max', func_get_args());
+            return \call_user_func_array('max', \func_get_args());
         };
 
         $this->functions['min'] = function () {
-            return \call_user_func_array('min', func_get_args());
+            return \call_user_func_array('min', \func_get_args());
         };
 
         $this->functions['abs'] = function ($a) {
@@ -51,7 +51,7 @@ class EvaluateContext
                 return $a->count();
             }
 
-            $a = $a instanceof \Traversable ? \iterator_to_array($a) : $a;
+            $a = $a instanceof \Traversable ? iterator_to_array($a) : $a;
 
             return \count($a);
         };
@@ -83,7 +83,7 @@ class EvaluateContext
      */
     public function hasVariable($var)
     {
-        return array_key_exists($var, $this->variables);
+        return \array_key_exists($var, $this->variables);
     }
 
     /**
@@ -106,7 +106,7 @@ class EvaluateContext
      */
     public function hasFunction($fnName)
     {
-        return array_key_exists($fnName, $this->functions);
+        return \array_key_exists($fnName, $this->functions);
     }
 
     /**

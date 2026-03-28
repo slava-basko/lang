@@ -38,7 +38,7 @@ class BinaryNode implements NodeInterface
         $this->left = $left;
         $this->right = $right;
 
-        if (function_exists("bcscale")) {
+        if (\function_exists("bcscale")) {
             $this->bcPresent = true;
             bcscale(20);
         }
@@ -123,10 +123,10 @@ class BinaryNode implements NodeInterface
                     case '>=':
                         return $useBc ? (bccomp($l, $r) !== -1) : ($l >= $r);
                     case 'in':
-                        if (is_array($r)) {
-                            return in_array($l, $r, true);
+                        if (\is_array($r)) {
+                            return \in_array($l, $r, true);
                         }
-                        if (is_string($r) && is_string($l)) {
+                        if (\is_string($r) && \is_string($l)) {
                             return strpos($r, $l) !== false;
                         }
 
@@ -153,7 +153,7 @@ class BinaryNode implements NodeInterface
     private function isNumber($value)
     {
         // если NumberNode всегда возвращает строку
-        return is_string($value) && preg_match('/^-?\d+(\.\d+)?$/', $value);
+        return \is_string($value) && \preg_match('/^-?\d+(\.\d+)?$/', $value);
     }
 
     /**

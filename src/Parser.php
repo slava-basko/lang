@@ -198,7 +198,7 @@ class Parser
         }
 
         // Unary operators (-, !, not)
-        if ($token->type === Token::OPERATOR && in_array($token->value, ['-', '!'])) {
+        if ($token->type === Token::OPERATOR && \in_array($token->value, ['-', '!'])) {
             $this->tokenStream->consume();
             $operand = $this->parsePrimary();
 

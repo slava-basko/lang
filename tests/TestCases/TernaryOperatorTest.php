@@ -15,7 +15,7 @@ class TernaryOperatorTest extends BaseCase
 
         $this->assertEquals(
             'dev',
-            $this->evalExp('config["debug"] ? "dev" : "prod"', $context)
+            $this->evalExp('config["debug"] ? "dev" : "prod"', $context),
         );
     }
 
@@ -31,7 +31,7 @@ class TernaryOperatorTest extends BaseCase
                                         ( arg == 'T' ) ? 'train' :
                                         ( arg == 'C' ) ? 'car' :
                                         ( arg == 'H' ) ? 'horse' :
-                                        'feet' )", $context)
+                                        'feet' )", $context),
         );
     }
 }

@@ -238,14 +238,14 @@ class Tokenizer
         $allowedTwoChar = ['==', '!=', '<=', '>=', '&&', '||'];
         $allowedSingle = ['+', '-', '*', '/', '%', '^', '<', '>', '!'];
 
-        if ($twoChar !== null && in_array($twoChar, $allowedTwoChar, true)) {
+        if ($twoChar !== null && \in_array($twoChar, $allowedTwoChar, true)) {
             $this->tokens[] = new Token(Token::OPERATOR, $twoChar, $position);
             $this->expressionStream->consume();
 
             return;
         }
 
-        if (in_array($value, $allowedSingle, true)) {
+        if (\in_array($value, $allowedSingle, true)) {
             $this->tokens[] = new Token(Token::OPERATOR, $value, $position);
 
             return;

@@ -155,7 +155,7 @@ class ASTDotBuilder
             return "Ternary (?:)";
         }
 
-        return get_class($node);
+        return \get_class($node);
     }
 
     /**
