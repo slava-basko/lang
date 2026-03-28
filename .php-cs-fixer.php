@@ -17,6 +17,9 @@ return (new Config())
             'scope' => 'all',
         ],
         'trailing_comma_in_multiline' => false,
+        'modifier_keywords' => [
+            'elements' => ['method', 'property'],
+        ],
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(
