@@ -7,13 +7,22 @@ use Basko\Lang\Node\Exception\EvaluateException;
 
 class IdentifierNode implements NodeInterface
 {
+    /**
+     * @var string
+     */
     private $name;
 
+    /**
+     * @param string $name
+     */
     public function __construct($name)
     {
         $this->name = $name;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function evaluate(EvaluateContext $context)
     {
         if (!$context->hasVariable($this->name)) {
@@ -23,6 +32,9 @@ class IdentifierNode implements NodeInterface
         return $context->getVariable($this->name);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function toString()
     {
         return $this->name;

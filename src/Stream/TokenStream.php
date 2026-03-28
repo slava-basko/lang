@@ -2,31 +2,45 @@
 
 namespace Basko\Lang\Stream;
 
-use Basko\Lang\ExpressionContext;
 use Basko\Lang\Stream\Exception\StreamException;
 
-class TokenStream implements StreamInterface
+class TokenStream
 {
     /**
      * @var array<array-key, \Basko\Lang\Token>
      */
     private $tokens;
 
+    /**
+     * @var int
+     */
     private $position = 0;
 
+    /**
+     * @var int
+     */
     private $len;
 
+    /**
+     * @param array<\Basko\Lang\Token> $tokens
+     */
     public function __construct(array $tokens)
     {
         $this->tokens = $tokens;
-        $this->len = count($tokens);
+        $this->len = \count($tokens);
     }
 
+    /**
+     * @return void
+     */
     public function reset()
     {
         $this->position = 0;
     }
 
+    /**
+     * @return bool
+     */
     public function isEof()
     {
         return $this->position >= $this->len;
@@ -58,7 +72,7 @@ class TokenStream implements StreamInterface
     }
 
     /**
-     * @param $compareTo
+     * @param string $compareTo
      * @throws \Basko\Lang\Stream\Exception\StreamException
      */
     public function expect($compareTo)
@@ -67,10 +81,5 @@ class TokenStream implements StreamInterface
         if ($token->type !== $compareTo) {
             throw new StreamException("Expected '$compareTo' but got '{$token->type}' at position {$this->position}");
         }
-    }
-
-    public function getPosition()
-    {
-        return $this->position;
     }
 }

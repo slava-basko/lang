@@ -6,13 +6,22 @@ use Basko\Lang\EvaluateContext;
 
 class ArrayLiteralNode implements NodeInterface
 {
+    /**
+     * @var array<\Basko\Lang\Node\NodeInterface>
+     */
     private $elements;
 
+    /**
+     * @param array<\Basko\Lang\Node\NodeInterface> $elements
+     */
     public function __construct(array $elements)
     {
         $this->elements = $elements;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function evaluate(EvaluateContext $context)
     {
         $result = [];
@@ -23,6 +32,9 @@ class ArrayLiteralNode implements NodeInterface
         return $result;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function toString()
     {
         $elStrings = [];

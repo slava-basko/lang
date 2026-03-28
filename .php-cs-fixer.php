@@ -13,6 +13,13 @@ return (new Config())
         '@auto' => true,
         'modernize_strpos' => false,
         'single_blank_line_at_eof' => true,
+        'native_function_invocation' => [
+            'include' => [
+                '@compiler_optimized',
+            ],
+            'scope' => 'namespaced',
+            'strict' => true,
+        ],
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(

@@ -6,7 +6,14 @@ use Basko\Lang\Exception\ContextException;
 
 class EvaluateContext
 {
+    /**
+     * @var array<string, mixed>
+     */
     private $variables = [];
+
+    /**
+     * @var array<string, callable>
+     */
     private $functions = [];
 
     public function __construct()
@@ -48,37 +55,42 @@ class EvaluateContext
 
             return \count($a);
         };
-
-        //        $this->functions['contains'] = function ($needle, $haystack) {
-        //            if (\is_string($haystack)) {
-        //                return $needle === '' || false !== \strpos($haystack, $needle);
-        //            }
-        //
-        //            foreach ($haystack as $element) {
-        //                if ($needle === $element) {
-        //                    return true;
-        //                }
-        //            }
-        //
-        //            return false;
-        //        };
     }
 
+    /**
+     * @param string $var
+     * @param mixed $value
+     * @return void
+     */
     public function addVariable($var, $value)
     {
         $this->variables[$var] = $value;
     }
 
+    /**
+     * @param string $fnName
+     * @param callable $fn
+     * @return void
+     */
     public function addFunction($fnName, $fn)
     {
         $this->functions[$fnName] = $fn;
     }
 
+    /**
+     * @param string $var
+     * @return bool
+     */
     public function hasVariable($var)
     {
         return array_key_exists($var, $this->variables);
     }
 
+    /**
+     * @param string $name
+     * @return mixed
+     * @throws \Basko\Lang\Exception\ContextException
+     */
     public function getVariable($name)
     {
         if (!$this->hasVariable($name)) {
@@ -88,11 +100,20 @@ class EvaluateContext
         return $this->variables[$name];
     }
 
+    /**
+     * @param string $fnName
+     * @return bool
+     */
     public function hasFunction($fnName)
     {
         return array_key_exists($fnName, $this->functions);
     }
 
+    /**
+     * @param string $fnName
+     * @return callable
+     * @throws \Basko\Lang\Exception\ContextException
+     */
     public function getFunction($fnName)
     {
         if (!$this->hasFunction($fnName)) {

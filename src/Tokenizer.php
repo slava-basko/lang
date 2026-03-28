@@ -7,42 +7,38 @@ use Basko\Lang\Stream\ExpressionStream;
 
 class Tokenizer
 {
+    /**
+     * @var array<\Basko\Lang\Token>
+     */
     private $tokens;
+
     /**
      * @var \Basko\Lang\Stream\ExpressionStream
      */
     private $expressionStream;
 
+    /**
+     * @param string $input
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function __construct($input)
     {
-        $this->expressionStream = new ExpressionStream(str_replace(["\r", "\n", "\t", "\v", "\f"], ' ', $input));
+        $this->expressionStream = new ExpressionStream($input);
     }
 
+    /**
+     * @return \Basko\Lang\Stream\ExpressionStream
+     */
     public function getExpressionStream()
     {
         return $this->expressionStream;
     }
 
-    private function isWhitespace($char)
-    {
-        return $char === ' ' || $char === "\t" || $char === "\n" || $char === "\r";
-    }
-
-    private function isDigit($char)
-    {
-        return $char >= '0' && $char <= '9';
-    }
-
-    private function isLetter($char)
-    {
-        return ($char >= 'a' && $char <= 'z') || ($char >= 'A' && $char <= 'Z') || $char === '_';
-    }
-
-    public function isLetterOrDigit($char)
-    {
-        return $this->isLetter($char) || $this->isDigit($char);
-    }
-
+    /**
+     * @return array<\Basko\Lang\Token>
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function tokenize()
     {
         $this->expressionStream->reset();
@@ -50,18 +46,19 @@ class Tokenizer
 
         while (!$this->expressionStream->isEof()) {
             $char = $this->expressionStream->peek();
-            $position = $this->expressionStream->getPosition();
 
-            if ($this->isWhitespace($char)) {
+            if (Utils::isWhitespace($char)) {
                 $this->expressionStream->consume();
                 continue;
             }
 
-            if ($this->isDigit($char)) {
+            $position = $this->expressionStream->getPosition();
+
+            if (Utils::isDigit($char)) {
                 $this->tokenizeNumber();
             } elseif ($char === '"' || $char === "'") {
                 $this->tokenizeString();
-            } elseif ($this->isLetter($char)) {
+            } elseif (Utils::isLetter($char)) {
                 $this->tokenizeIdentifier();
             } elseif ($char === '(') {
                 $this->expressionStream->consume();
@@ -97,6 +94,11 @@ class Tokenizer
         return $this->tokens;
     }
 
+    /**
+     * @return void
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function tokenizeNumber()
     {
         $position = $this->expressionStream->getPosition();
@@ -106,9 +108,9 @@ class Tokenizer
         while (!$this->expressionStream->isEof()) {
             $char = $this->expressionStream->peek();
 
-            if ($this->isDigit($char) || $char === '.') {
+            if (Utils::isDigit($char) || $char === '.') {
                 if ($char === '.' && $hasDot) {
-                    throw new ParseException("Invalid symbol '$char', only one dot allowed in number", $position, $this->expressionStream->getString());
+                    throw ParseException::create("Invalid symbol '$char', only one dot allowed in number", $position, $this->expressionStream->getString());
                 }
 
                 if ($char === '.') {
@@ -118,25 +120,25 @@ class Tokenizer
                 $value .= $this->expressionStream->consume();
 
                 if ($char === '.' && $this->expressionStream->isEof()) {
-                    throw new ParseException("Invalid symbol 'EOF' right after dot", $position, $this->expressionStream->getString());
+                    throw ParseException::create("Invalid symbol 'EOF' right after dot", $position, $this->expressionStream->getString());
                 }
 
-                if ($char === '.' && !$this->isDigit($this->expressionStream->peek())) {
-                    break;
+                if ($char === '.' && !Utils::isDigit($this->expressionStream->peek())) {
+                    throw ParseException::create("Invalid invalid float number", $position, $this->expressionStream->getString());
                 }
             } else {
                 break;
             }
         }
 
-        $this->tokens[] = new Token(
-            Token::NUMBER,
-            //            $hasDot ? (float)$value : (int)$value,
-            $value,
-            $position
-        );
+        $this->tokens[] = new Token(Token::NUMBER, $value, $position);
     }
 
+    /**
+     * @return void
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function tokenizeString()
     {
         $position = $this->expressionStream->getPosition();
@@ -148,7 +150,7 @@ class Tokenizer
 
             if ($char === '\\') {
                 if ($this->expressionStream->isEof()) {
-                    throw new ParseException("Unterminated escape in string", $position, $this->expressionStream->getString());
+                    throw ParseException::create("Unterminated escape in string", $position, $this->expressionStream->getString());
                 }
                 $esc = $this->expressionStream->consume();
                 switch ($esc) {
@@ -188,15 +190,19 @@ class Tokenizer
         }
 
         // если вышли из цикла — EOF до закрывающей кавычки
-        throw new ParseException("Unterminated string literal", $position, $this->expressionStream->getString());
+        throw ParseException::create("Unterminated string literal", $position, $this->expressionStream->getString());
     }
 
+    /**
+     * @return void
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function tokenizeIdentifier()
     {
         $position = $this->expressionStream->getPosition();
         $value = $this->expressionStream->consume();
 
-        while (!$this->expressionStream->isEof() && $this->isLetterOrDigit($this->expressionStream->peek())) {
+        while (!$this->expressionStream->isEof() && Utils::isLetterOrDigit($this->expressionStream->peek())) {
             $value .= $this->expressionStream->consume();
         }
 
@@ -218,6 +224,11 @@ class Tokenizer
         }
     }
 
+    /**
+     * @return void
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function tokenizeOperator()
     {
         $position = $this->expressionStream->getPosition();
@@ -241,6 +252,6 @@ class Tokenizer
         }
 
         // unknown symbol -> throw ParseException
-        throw new ParseException("Invalid symbol '$value'", $position, $this->expressionStream->getString());
+        throw ParseException::create("Invalid symbol '$value'", $position, $this->expressionStream->getString());
     }
 }

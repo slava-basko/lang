@@ -7,11 +7,31 @@ use Basko\Lang\Node\Exception\EvaluateException;
 
 class BinaryNode implements NodeInterface
 {
+    /**
+     * @var string
+     */
     private $operator;
+
+    /**
+     * @var \Basko\Lang\Node\NodeInterface
+     */
     private $left;
+
+    /**
+     * @var \Basko\Lang\Node\NodeInterface
+     */
     private $right;
+
+    /**
+     * @var bool
+     */
     private $bcPresent = false;
 
+    /**
+     * @param string $operator
+     * @param \Basko\Lang\Node\NodeInterface $left
+     * @param \Basko\Lang\Node\NodeInterface $right
+     */
     public function __construct($operator, NodeInterface $left, NodeInterface $right)
     {
         $this->operator = $operator;
@@ -24,6 +44,9 @@ class BinaryNode implements NodeInterface
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function evaluate(EvaluateContext $context)
     {
         $l = $this->left->evaluate($context);
@@ -114,17 +137,28 @@ class BinaryNode implements NodeInterface
         }
     }
 
-    private function bcHuman(string $num): string
+    /**
+     * @param string $num
+     * @return string
+     */
+    private function bcHuman($num)
     {
         return rtrim(rtrim($num, '0'), '.');
     }
 
-    private function isNumber($value): bool
+    /**
+     * @param mixed $value
+     * @return bool
+     */
+    private function isNumber($value)
     {
         // если NumberNode всегда возвращает строку
         return is_string($value) && preg_match('/^-?\d+(\.\d+)?$/', $value);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function toString()
     {
         return "({$this->left->toString()} {$this->operator} {$this->right->toString()})";

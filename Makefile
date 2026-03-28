@@ -1,13 +1,10 @@
-help:																			## shows this help
+help:																			## Shows this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_\-\.]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-lint:																			## Lint PHP files
-	find . -name '*.php' -print0 | xargs -0 -n1 php -d error_reporting=E_ALL -n -l
-
-cs-fix:																			## run PHP-CS-Fixer
+cs-fix:																			## Run PHP-CS-Fixer
 	./php-cs-fixer.phar fix
 
-unit-tests:																		## run phpunit
+unit-tests:																		## Run phpunit
 	XDEBUG_MODE=coverage ./phpunit.phar -c phpunit.xml --coverage-html tests/coverage/ --coverage-filter src/
 
-check: lint cs-fix unit-tests
+check: cs-fix unit-tests

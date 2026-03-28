@@ -2,6 +2,7 @@
 
 namespace Basko\Lang\TestCases;
 
+use Basko\Lang\Exception\ParseException;
 use Basko\Lang\Node\Exception\EvaluateException;
 
 class MathTest extends BaseCase
@@ -85,5 +86,23 @@ class MathTest extends BaseCase
     {
         $this->assertEquals(-3, $this->evalExp('-1 - 2'));
         $this->assertEquals(-0.3, $this->evalExp('-0.1 - 0.2'));
+    }
+
+    public function testDotAtTheEnd()
+    {
+        try {
+            $this->evalExp('(1 + 1.) > 0');
+        } catch (ParseException $e) {
+            $this->assertEquals('Invalid invalid float number', $e->getMessage());
+        }
+    }
+
+    public function testInvalidMathOperation()
+    {
+        try {
+            $this->evalExp('1 2');
+        } catch (ParseException $e) {
+            $this->assertEquals("Bad token '2' (operator expected)", $e->getMessage());
+        }
     }
 }

@@ -2,34 +2,58 @@
 
 namespace Basko\Lang\Stream;
 
-use Basko\Lang\ExpressionContext;
 use Basko\Lang\Stream\Exception\StreamException;
+use Basko\Lang\Utils;
 
-class ExpressionStream implements StreamInterface
+class ExpressionStream
 {
     /**
      * @var string
      */
     private $string;
 
-    private $position = 0;
+    /**
+     * @var int
+     */
+    private $cursor = 0;
 
+    /**
+     * @var \Basko\Lang\Stream\Position
+     */
+    private $position;
+
+    /**
+     * @var int
+     */
     private $len;
 
+    /**
+     * @param string $string
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function __construct($string)
     {
-        $this->string = $string;
-        $this->len = strlen($string);
+        $this->string = \preg_replace("/\r\n?/", "\n", $string); // Only LF is ok
+        $this->len = \strlen($string);
+        $this->position = new Position(1, 1);
     }
 
+    /**
+     * @return void
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function reset()
     {
-        $this->position = 0;
+        $this->cursor = 0;
+        $this->position = new Position(1, 1);
     }
 
+    /**
+     * @return bool
+     */
     public function isEof()
     {
-        return $this->position >= $this->len;
+        return $this->cursor >= $this->len;
     }
 
     /**
@@ -42,23 +66,33 @@ class ExpressionStream implements StreamInterface
             throw new StreamException('End of expression stream was reached');
         }
 
-        return $this->string[$this->position];
+        return $this->string[$this->cursor];
     }
 
+    /**
+     * @return string
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function consume()
     {
         $char = $this->peek();
-        $this->position++;
+        $this->cursor++;
+
+        $this->position->column++;
+        if (Utils::isNewLine($char)) {
+            $this->position->line++;
+            $this->position->column = 1;
+        }
 
         return $char;
     }
 
     /**
-     * @return int
+     * @return \Basko\Lang\Stream\Position
      */
     public function getPosition()
     {
-        return $this->position;
+        return clone $this->position;
     }
 
     /**
@@ -69,11 +103,22 @@ class ExpressionStream implements StreamInterface
         return $this->string;
     }
 
+    /**
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     * @throws \Basko\Lang\Exception\Exception
+     */
     public function expect($compareTo)
     {
         $char = $this->peek();
         if ($char !== $compareTo) {
-            throw new StreamException("Expected '$compareTo' but got '$char' at position {$this->position}");
+            $line = $this->position->line;
+            $column = $this->position->column;
+
+            throw StreamException::create(
+                "Expected '$compareTo' but got '$char' at position $line:$column",
+                $this->getPosition(),
+                $this->getString()
+            );
         }
     }
 }

@@ -55,13 +55,20 @@ class Parser
      */
     private function getInfixBindingPower($operator)
     {
-        if (!array_key_exists($operator, self::$bindingPower)) {
+        if (!\array_key_exists($operator, self::$bindingPower)) {
             throw new Exception("Unknown operator '$operator'");
         }
 
         return self::$bindingPower[$operator];
     }
 
+    /**
+     * @param string $input
+     * @return \Basko\Lang\Node\NodeInterface
+     * @throws \Basko\Lang\Exception\Exception
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     public function parse($input)
     {
         $this->tokenizer = new Tokenizer($input);
@@ -71,6 +78,13 @@ class Parser
         return $this->parseExpression(0);
     }
 
+    /**
+     * @param $minBindingPower
+     * @return \Basko\Lang\Node\NodeInterface
+     * @throws \Basko\Lang\Exception\Exception
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function parseExpression($minBindingPower)
     {
         $left = $this->parsePrimary();
@@ -123,12 +137,18 @@ class Parser
             }
 
             //            throw new Exception("Bad token '{$token->value}' at position {$token->pos} (operator expected)");
-            throw new ParseException("Bad token '{$token->value}' (operator expected)", $token->pos, $this->tokenizer->getExpressionStream()->getString());
+            throw ParseException::create("Bad token '{$token->value}' (operator expected)", $token->pos, $this->tokenizer->getExpressionStream()->getString());
         }
 
         return $left;
     }
 
+    /**
+     * @return \Basko\Lang\Node\NodeInterface
+     * @throws \Basko\Lang\Exception\Exception
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function parsePrimary()
     {
         $token = $this->tokenStream->peek();
@@ -205,14 +225,21 @@ class Parser
             return $this->parsePostfix(new ArrayLiteralNode($elements));
         }
 
-        throw new Exception(\sprintf(
+        throw ParseException::create(\sprintf(
             "Unexpected token '%s' with value '%s' at position %s",
             $token->type,
             $token->value,
             $token->pos
-        ));
+        ), $token->pos, $this->tokenizer->getExpressionStream()->getString());
     }
 
+    /**
+     * @param \Basko\Lang\Node\NodeInterface $left
+     * @return \Basko\Lang\Node\ArrAccessNode|\Basko\Lang\Node\MethodCallNode|\Basko\Lang\Node\PropAccessNode
+     * @throws \Basko\Lang\Exception\Exception
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function parsePostfix($left)
     {
         while (true) {
@@ -255,6 +282,12 @@ class Parser
         return $left;
     }
 
+    /**
+     * @return array
+     * @throws \Basko\Lang\Exception\Exception
+     * @throws \Basko\Lang\Exception\ParseException
+     * @throws \Basko\Lang\Stream\Exception\StreamException
+     */
     private function parseArguments()
     {
         $args = [];

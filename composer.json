@@ -1,26 +1,32 @@
 {
-  "name": "slava-basko/lang-php",
-  "type": "library",
-  "description": "Language to write business expressions",
-  "keywords": ["language", "expressions"],
-  "authors": [
-    {
-      "name": "Slava Basko",
-      "email": "basko.slava@gmail.com"
+    "name": "slava-basko/lang-php",
+    "type": "library",
+    "description": "Language to write business expressions",
+    "keywords": ["language", "expressions"],
+    "authors": [
+        {
+            "name": "Slava Basko",
+            "email": "basko.slava@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "suggest": {
+        "ext-bcmath": "Install it if you want (0.1 + 0.2) == 0.3 to be true"
+    },
+    "autoload": {
+        "psr-4": {
+            "Basko\\Lang\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Basko\\Lang\\": "tests"
+        }
     }
-  ],
-  "license": "MIT",
-  "require": {
-    "php": "^8"
-  },
-  "autoload": {
-    "psr-4": {
-      "Basko\\Lang\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Basko\\Lang\\": "tests"
-    }
-  }
 }

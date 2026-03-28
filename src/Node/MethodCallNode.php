@@ -7,10 +7,26 @@ use Basko\Lang\Node\Exception\EvaluateException;
 
 class MethodCallNode implements NodeInterface
 {
+    /**
+     * @var \Basko\Lang\Node\NodeInterface
+     */
     private $object;
+
+    /**
+     * @var string
+     */
     private $method;
+
+    /**
+     * @var array
+     */
     private $args;
 
+    /**
+     * @param \Basko\Lang\Node\NodeInterface $object
+     * @param string $method
+     * @param array $args
+     */
     public function __construct(NodeInterface $object, $method, array $args)
     {
         $this->object = $object;
@@ -18,6 +34,9 @@ class MethodCallNode implements NodeInterface
         $this->args = $args;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function evaluate(EvaluateContext $context)
     {
         $obj = $this->object->evaluate($context);
@@ -38,6 +57,9 @@ class MethodCallNode implements NodeInterface
         return call_user_func_array([$obj, $this->method], $evaluatedArgs);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function toString()
     {
         $argStrings = [];
