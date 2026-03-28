@@ -33,7 +33,7 @@ class ASTDotBuilder
 
         foreach ($this->nodes as $id => $label) {
             // json_encode даёт корректную экранированную строку в кавычках
-            $dot .= "  n{$id} [label=" . json_encode($label) . "];\n";
+            $dot .= "  n{$id} [label=" . \json_encode($label) . "];\n";
         }
 
         $dot .= "\n";

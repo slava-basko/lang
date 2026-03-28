@@ -1,25 +1,22 @@
 <?php
 
-declare(strict_types=1);
-
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 return (new Config())
-    ->setParallelConfig(ParallelConfigFactory::detect()) // @TODO 4.0 no need to call this manually
-    ->setRiskyAllowed(false)
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRules([
         '@auto' => true,
         'modernize_strpos' => false,
         'single_blank_line_at_eof' => true,
         'native_function_invocation' => [
             'include' => [
-                '@compiler_optimized',
+                '@internal',
             ],
-            'scope' => 'namespaced',
-            'strict' => true,
+            'scope' => 'all',
         ],
+        'trailing_comma_in_multiline' => false,
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(

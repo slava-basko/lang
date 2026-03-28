@@ -41,7 +41,7 @@ class ArrayLiteralNode implements NodeInterface
         foreach ($this->elements as $el) {
             $elStrings[] = $el->toString();
         }
-        $els = implode(', ', $elStrings);
+        $els = \implode(', ', $elStrings);
 
         return "[{$els}]";
     }

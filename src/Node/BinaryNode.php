@@ -40,7 +40,7 @@ class BinaryNode implements NodeInterface
 
         if (\function_exists("bcscale")) {
             $this->bcPresent = true;
-            bcscale(20);
+            \bcscale(20);
         }
     }
 
@@ -77,57 +77,57 @@ class BinaryNode implements NodeInterface
 
                 switch ($this->operator) {
                     case '+':
-                        return $useBc ? $this->bcHuman(bcadd($l, $r)) : $l + $r;
+                        return $useBc ? $this->bcHuman(\bcadd($l, $r)) : $l + $r;
                     case '-':
-                        return $useBc ? $this->bcHuman(bcsub($l, $r)) : $l - $r;
+                        return $useBc ? $this->bcHuman(\bcsub($l, $r)) : $l - $r;
                     case '*':
-                        return $useBc ? $this->bcHuman(bcmul($l, $r)) : $l * $r;
+                        return $useBc ? $this->bcHuman(\bcmul($l, $r)) : $l * $r;
                     case '/':
                         if ($useBc) {
-                            if (bccomp($r, "0") === 0) {
+                            if (\bccomp($r, "0") === 0) {
                                 throw new EvaluateException("Division by zero: {$this->toString()}");
                             }
-                            return $this->bcHuman(bcdiv($l, $r));
+                            return $this->bcHuman(\bcdiv($l, $r));
                         }
                         return $l / $r;
                     case '%':
                         if ($useBc) {
-                            if (bccomp($r, "0") === 0) {
+                            if (\bccomp($r, "0") === 0) {
                                 throw new EvaluateException("Division by zero: {$this->toString()}");
                             }
 
-                            if (str_contains($l, '.') || str_contains($r, '.')) {
+                            if (\str_contains($l, '.') || \str_contains($r, '.')) {
                                 throw new EvaluateException("Modulo with non-integers: {$this->toString()}");
                             }
-                            return $this->bcHuman(bcmod($l, $r));
+                            return $this->bcHuman(\bcmod($l, $r));
                         }
                         return $l % $r;
                     case '^':
                         if ($useBc) {
-                            if (str_contains($r, '.')) {
+                            if (\str_contains($r, '.')) {
                                 throw new EvaluateException("Exponent must be integer: {$this->toString()}");
                             }
-                            return $this->bcHuman(bcpow($l, $r));
+                            return $this->bcHuman(\bcpow($l, $r));
                         }
-                        return pow($l, $r);
+                        return \pow($l, $r);
                     case '==':
-                        return $useBc ? (bccomp($l, $r) === 0) : ($l == $r);
+                        return $useBc ? (\bccomp($l, $r) === 0) : ($l == $r);
                     case '!=':
-                        return $useBc ? (bccomp($l, $r) !== 0) : ($l != $r);
+                        return $useBc ? (\bccomp($l, $r) !== 0) : ($l != $r);
                     case '<':
-                        return $useBc ? (bccomp($l, $r) === -1) : ($l < $r);
+                        return $useBc ? (\bccomp($l, $r) === -1) : ($l < $r);
                     case '>':
-                        return $useBc ? (bccomp($l, $r) === 1) : ($l > $r);
+                        return $useBc ? (\bccomp($l, $r) === 1) : ($l > $r);
                     case '<=':
-                        return $useBc ? (bccomp($l, $r) !== 1) : ($l <= $r);
+                        return $useBc ? (\bccomp($l, $r) !== 1) : ($l <= $r);
                     case '>=':
-                        return $useBc ? (bccomp($l, $r) !== -1) : ($l >= $r);
+                        return $useBc ? (\bccomp($l, $r) !== -1) : ($l >= $r);
                     case 'in':
                         if (\is_array($r)) {
                             return \in_array($l, $r, true);
                         }
                         if (\is_string($r) && \is_string($l)) {
-                            return strpos($r, $l) !== false;
+                            return \strpos($r, $l) !== false;
                         }
 
                         return false;
@@ -143,7 +143,7 @@ class BinaryNode implements NodeInterface
      */
     private function bcHuman($num)
     {
-        return rtrim(rtrim($num, '0'), '.');
+        return \rtrim(\rtrim($num, '0'), '.');
     }
 
     /**

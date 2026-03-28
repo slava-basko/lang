@@ -27,19 +27,19 @@ class EvaluateContext
         };
 
         $this->functions['abs'] = function ($a) {
-            return abs($a);
+            return \abs($a);
         };
 
         $this->functions['round'] = function ($num, $precision) {
-            return round($num, $precision);
+            return \round($num, $precision);
         };
 
         $this->functions['upper'] = function ($str) {
-            return strtoupper($str);
+            return \strtoupper($str);
         };
 
         $this->functions['lower'] = function ($str) {
-            return strtolower($str);
+            return \strtolower($str);
         };
 
         $this->functions['len'] = function ($a) {
@@ -51,7 +51,7 @@ class EvaluateContext
                 return $a->count();
             }
 
-            $a = $a instanceof \Traversable ? iterator_to_array($a) : $a;
+            $a = $a instanceof \Traversable ? \iterator_to_array($a) : $a;
 
             return \count($a);
         };

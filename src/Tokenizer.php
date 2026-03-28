@@ -206,7 +206,7 @@ class Tokenizer
             $value .= $this->expressionStream->consume();
         }
 
-        $lower = strtolower($value);
+        $lower = \strtolower($value);
 
         if ($lower === 'true' || $lower === 'false') {
             $this->tokens[] = new Token(Token::BOOLEAN, $lower === 'true', $position);

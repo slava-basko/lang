@@ -76,6 +76,6 @@ class Exception extends \Exception
 
         $header = \sprintf("Parse error: %s", $this->getMessage());
 
-        return $header . "\n" . implode("\n", $lines) . "\n";
+        return $header . "\n" . \implode("\n", $lines) . "\n";
     }
 }
