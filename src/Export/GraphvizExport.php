@@ -1,32 +1,38 @@
 <?php
 
-namespace Basko\Lang\Dumper;
+namespace Basko\Lang\Export;
 
+use Basko\Lang\Node\ArrAccessNode;
+use Basko\Lang\Node\ArrayLiteralNode;
+use Basko\Lang\Node\BinaryNode;
+use Basko\Lang\Node\BooleanNode;
+use Basko\Lang\Node\FunctionCallNode;
+use Basko\Lang\Node\IdentifierNode;
+use Basko\Lang\Node\MethodCallNode;
 use Basko\Lang\Node\NodeInterface;
+use Basko\Lang\Node\NumberNode;
+use Basko\Lang\Node\PropAccessNode;
+use Basko\Lang\Node\StringNode;
+use Basko\Lang\Node\TernaryNode;
+use Basko\Lang\Node\UnaryNode;
 use ReflectionClass;
 
-/**
- * TODO: it's a draft.
- */
-class ASTDotBuilder
+class GraphvizExport implements ExportInterface
 {
     private $nodes = [];
     private $edges = [];
     private $counter = 0;
 
     /**
-     * Построить DOT-строку для данного expression (корня AST)
-     *
-     * @param NodeInterface $expr
-     * @return string DOT
+     * @inheritdoc
      */
-    public function build(NodeInterface $expr)
+    public function build(NodeInterface $node)
     {
         $this->nodes = [];
         $this->edges = [];
         $this->counter = 0;
 
-        $this->visit($expr);
+        $this->visit($node);
 
         $dot = "digraph AST {\n";
         $dot .= "  node [shape=box, fontname=\"Helvetica\"];\n\n";
@@ -54,43 +60,43 @@ class ASTDotBuilder
         $this->nodes[$id] = $label;
 
         // рекурсивно посетить детей в зависимости от типа
-        if ($node instanceof \Basko\Lang\Node\BinaryNode) {
+        if ($node instanceof BinaryNode) {
             $leftId = $this->visit($this->getPrivate($node, 'left'));
             $rightId = $this->visit($this->getPrivate($node, 'right'));
             $this->edges[] = [$id, $leftId];
             $this->edges[] = [$id, $rightId];
-        } elseif ($node instanceof \Basko\Lang\Node\UnaryNode) {
+        } elseif ($node instanceof UnaryNode) {
             $operandId = $this->visit($this->getPrivate($node, 'operand'));
             $this->edges[] = [$id, $operandId];
-        } elseif ($node instanceof \Basko\Lang\Node\NumberNode
-            || $node instanceof \Basko\Lang\Node\StringNode
-            || $node instanceof \Basko\Lang\Node\BooleanNode
-            || $node instanceof \Basko\Lang\Node\IdentifierNode) {
-            // листья — ничего не делать
-        } elseif ($node instanceof \Basko\Lang\Node\FunctionCallNode) {
+        } elseif ($node instanceof NumberNode
+            || $node instanceof StringNode
+            || $node instanceof BooleanNode
+            || $node instanceof IdentifierNode) {
+            // Leafs — nothing to do
+        } elseif ($node instanceof FunctionCallNode) {
             $args = $this->getPrivate($node, 'args');
             foreach ($args as $arg) {
                 $childId = $this->visit($arg);
                 $this->edges[] = [$id, $childId];
             }
-        } elseif ($node instanceof \Basko\Lang\Node\ArrayLiteralNode) {
+        } elseif ($node instanceof ArrayLiteralNode) {
             $els = $this->getPrivate($node, 'elements');
             foreach ($els as $el) {
                 $childId = $this->visit($el);
                 $this->edges[] = [$id, $childId];
             }
-        } elseif ($node instanceof \Basko\Lang\Node\ArrAccessNode) {
+        } elseif ($node instanceof ArrAccessNode) {
             $arr = $this->getPrivate($node, 'array');
             $key = $this->getPrivate($node, 'key');
             $arrId = $this->visit($arr);
             $keyId = $this->visit($key);
             $this->edges[] = [$id, $arrId];
             $this->edges[] = [$id, $keyId];
-        } elseif ($node instanceof \Basko\Lang\Node\PropAccessNode) {
+        } elseif ($node instanceof PropAccessNode) {
             $obj = $this->getPrivate($node, 'object');
             $objId = $this->visit($obj);
             $this->edges[] = [$id, $objId];
-        } elseif ($node instanceof \Basko\Lang\Node\MethodCallNode) {
+        } elseif ($node instanceof MethodCallNode) {
             $obj = $this->getPrivate($node, 'object');
             $args = $this->getPrivate($node, 'args');
             $objId = $this->visit($obj);
@@ -99,7 +105,7 @@ class ASTDotBuilder
                 $childId = $this->visit($arg);
                 $this->edges[] = [$id, $childId];
             }
-        } elseif ($node instanceof \Basko\Lang\Node\TernaryNode) {
+        } elseif ($node instanceof TernaryNode) {
             $c = $this->getPrivate($node, 'condition');
             $t = $this->getPrivate($node, 'trueExpr');
             $f = $this->getPrivate($node, 'falseExpr');
@@ -118,40 +124,40 @@ class ASTDotBuilder
 
     private function nodeLabel($node)
     {
-        if ($node instanceof \Basko\Lang\Node\NumberNode) {
+        if ($node instanceof NumberNode) {
             return "Number\n" . $this->getPrivate($node, 'value');
         }
-        if ($node instanceof \Basko\Lang\Node\StringNode) {
+        if ($node instanceof StringNode) {
             return "String\n" . $this->getPrivate($node, 'value');
         }
-        if ($node instanceof \Basko\Lang\Node\BooleanNode) {
+        if ($node instanceof BooleanNode) {
             return "Boolean\n" . ($this->getPrivate($node, 'value') ? 'true' : 'false');
         }
-        if ($node instanceof \Basko\Lang\Node\IdentifierNode) {
+        if ($node instanceof IdentifierNode) {
             return "Identifier\n" . $this->getPrivate($node, 'name');
         }
-        if ($node instanceof \Basko\Lang\Node\BinaryNode) {
+        if ($node instanceof BinaryNode) {
             return "BinaryOp\n" . $this->getPrivate($node, 'operator');
         }
-        if ($node instanceof \Basko\Lang\Node\UnaryNode) {
+        if ($node instanceof UnaryNode) {
             return "UnaryOp\n" . $this->getPrivate($node, 'operator');
         }
-        if ($node instanceof \Basko\Lang\Node\FunctionCallNode) {
+        if ($node instanceof FunctionCallNode) {
             return "FunctionCall\n" . $this->getPrivate($node, 'name');
         }
-        if ($node instanceof \Basko\Lang\Node\ArrayLiteralNode) {
+        if ($node instanceof ArrayLiteralNode) {
             return "ArrayLiteral";
         }
-        if ($node instanceof \Basko\Lang\Node\ArrAccessNode) {
+        if ($node instanceof ArrAccessNode) {
             return "ArrayAccess";
         }
-        if ($node instanceof \Basko\Lang\Node\PropAccessNode) {
+        if ($node instanceof PropAccessNode) {
             return "PropertyAccess\n" . $this->getPrivate($node, 'property');
         }
-        if ($node instanceof \Basko\Lang\Node\MethodCallNode) {
+        if ($node instanceof MethodCallNode) {
             return "MethodCall\n" . $this->getPrivate($node, 'method');
         }
-        if ($node instanceof \Basko\Lang\Node\TernaryNode) {
+        if ($node instanceof TernaryNode) {
             return "Ternary (?:)";
         }
 
@@ -169,7 +175,10 @@ class ASTDotBuilder
             return null;
         }
         $p = $refClass->getProperty($prop);
-        $p->setAccessible(true);
+
+        if (PHP_VERSION_ID < 80100) {
+            $p->setAccessible(true);
+        }
 
         return $p->getValue($obj);
     }
