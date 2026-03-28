@@ -1,7 +1,5 @@
-BLang
-=====
-
-Language to write business expressions.
+Language to write business expressions
+======================================
 
 Standalone no-dependency library.
 
