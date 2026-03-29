@@ -34,7 +34,7 @@ class ExpressionStream
     public function __construct($string)
     {
         $this->string = \preg_replace("/\r\n?/", "\n", $string); // Only LF is ok
-        $this->len = \strlen($string);
+        $this->len = \strlen($this->string);
         $this->position = new Position(1, 1);
     }
 

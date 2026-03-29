@@ -36,7 +36,24 @@ class UnaryNode implements NodeInterface
 
         switch ($this->operator) {
             case '-':
-                return "-$val";
+                // Preserve string representation for numeric strings (used by bcmath)
+                if (\is_string($val)) {
+                    if (\is_numeric($val)) {
+                        if (\strlen($val) > 0 && $val[0] === '-') {
+                            return \substr($val, 1);
+                        }
+                        if (\strlen($val) > 0 && $val[0] === '+') {
+                            return '-' . \substr($val, 1);
+                        }
+
+                        return '-' . $val;
+                    }
+
+                    // Strict behavior: unary minus on non-numeric string is an error
+                    throw new EvaluateException(\sprintf('Unary minus applied to non-numeric string: %s', $val));
+                }
+
+                return -$val;
             case '!':
                 return !$val;
             default:
