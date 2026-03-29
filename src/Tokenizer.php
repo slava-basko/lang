@@ -173,7 +173,6 @@ class Tokenizer
                         $value .= "'";
                         break;
                     default:
-                        // либо сохраняем как-is, либо бросаем ошибку
                         $value .= $esc;
                 }
                 continue;
@@ -189,7 +188,7 @@ class Tokenizer
             $value .= $char;
         }
 
-        // если вышли из цикла — EOF до закрывающей кавычки
+        // if we exit the loop - EOF before the closing quote
         throw ParseException::create("Unterminated string literal", $position, $this->expressionStream->getString());
     }
 

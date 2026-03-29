@@ -38,7 +38,7 @@ class GraphvizExport implements ExportInterface
         $dot .= "  node [shape=box, fontname=\"Helvetica\"];\n\n";
 
         foreach ($this->nodes as $id => $label) {
-            // json_encode даёт корректную экранированную строку в кавычках
+            // json_encode produces a correctly escaped quoted string
             $dot .= "  n{$id} [label=" . \json_encode($label) . "];\n";
         }
 
@@ -59,7 +59,7 @@ class GraphvizExport implements ExportInterface
         $label = $this->nodeLabel($node);
         $this->nodes[$id] = $label;
 
-        // рекурсивно посетить детей в зависимости от типа
+        // recursively visit children depending on type
         if ($node instanceof BinaryNode) {
             $leftId = $this->visit($this->getPrivate($node, 'left'));
             $rightId = $this->visit($this->getPrivate($node, 'right'));
@@ -116,7 +116,7 @@ class GraphvizExport implements ExportInterface
             $this->edges[] = [$id, $tid];
             $this->edges[] = [$id, $fid];
         } else {
-            // На будущее: добавьте обработку новых типов узлов
+            // For the future: add handling of new node types
         }
 
         return $id;
@@ -164,10 +164,6 @@ class GraphvizExport implements ExportInterface
         return \get_class($node);
     }
 
-    /**
-     * Утилитка: получить приватное/защищённое свойство через Reflection.
-     * Используется чтобы не менять существующие классы.
-     */
     private function getPrivate($obj, $prop)
     {
         $refClass = new ReflectionClass($obj);

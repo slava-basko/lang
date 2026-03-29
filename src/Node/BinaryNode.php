@@ -53,7 +53,7 @@ class BinaryNode implements NodeInterface
 
         switch ($this->operator) {
             case '&&':
-                // короткое замыкание: если левый false -> false, иначе вычислить правый
+                // short circuit: if left is false -> false, otherwise evaluate right
                 if (!$l) {
                     return false;
                 }
@@ -69,7 +69,7 @@ class BinaryNode implements NodeInterface
 
                 return (bool) $l || (bool) $r;
 
-                // остальные операторы — для них нужно вычислять правый
+                // other operators - for them we need to calculate the right one
             default:
                 $r = $this->right->evaluate($context);
 
@@ -152,7 +152,6 @@ class BinaryNode implements NodeInterface
      */
     private function isNumber($value)
     {
-        // если NumberNode всегда возвращает строку
         return \is_string($value) && \preg_match('/^-?\d+(\.\d+)?$/', $value);
     }
 
